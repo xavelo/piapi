@@ -18,8 +18,8 @@ public class KafkaProducer {
     private KafkaTemplate<String, String> kafkaTemplate;
 
     public void sendMessage(String msg) {
-        kafkaTemplate.send("test-topic", msg);
-        logger.debug("message {} sent to test-topic", msg);
+        kafkaTemplate.send("pi-topic", msg);
+        logger.debug("message {} sent to pi-topic", msg);
     }
 
     public void sendAsynchMessage(String message) {
