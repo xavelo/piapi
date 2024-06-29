@@ -24,9 +24,9 @@ public class PiApiController {
     }
 
     @PostMapping("/message")
-    public String sendMessage(@RequestBody String message) {
-        logger.info("Message received: %s", message);
-        kafkaProducer.sendMessage(message);
+    public String sendMessage(@RequestBody String topic, @RequestBody String message) {
+        logger.info("Message received for topic %S: %s", topic, message);
+        kafkaProducer.sendMessage(topic, message);
         return "Message sent to Kafka: " + message;
     }
 

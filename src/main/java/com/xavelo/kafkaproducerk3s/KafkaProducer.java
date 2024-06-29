@@ -17,9 +17,9 @@ public class KafkaProducer {
     @Autowired
     private KafkaTemplate<String, String> kafkaTemplate;
 
-    public void sendMessage(String msg) {
-        kafkaTemplate.send("pi-topic", msg);
-        logger.debug("message {} sent to pi-topic", msg);
+    public void sendMessage(String topic, String msg) {
+        kafkaTemplate.send(topic, msg);
+        logger.debug("message {} sent to {}", msg, topic);
     }
 
     public void sendAsynchMessage(String message) {
