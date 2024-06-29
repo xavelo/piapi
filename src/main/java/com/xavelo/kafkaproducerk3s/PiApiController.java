@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Map;
+
 @RestController
 public class PiApiController {
 
@@ -24,7 +26,9 @@ public class PiApiController {
     }
 
     @PostMapping("/message")
-    public String sendMessage(@RequestBody String topic, @RequestBody String message) {
+    public String sendMessage(@RequestBody Map<String, String> json) {
+        String topic = json.get("topic");
+        String message = json.get("message");
         logger.info("Message received for topic %S: %s", topic, message);
         kafkaProducer.sendMessage(topic, message);
         return "Message sent to Kafka: " + message;
