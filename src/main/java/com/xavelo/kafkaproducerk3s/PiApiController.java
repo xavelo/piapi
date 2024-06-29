@@ -20,7 +20,7 @@ public class PiApiController {
     public String ping() {
         logger.info("ping received");
         logger.info("pong returned");
-        return "pong";
+        return "pooooong";
     }
 
     @PostMapping("/message")
