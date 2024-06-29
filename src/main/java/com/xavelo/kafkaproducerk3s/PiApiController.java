@@ -15,6 +15,13 @@ public class PiApiController {
     @Autowired
     private KafkaProducer kafkaProducer;
 
+    @PostMapping("/ping")
+    public String ping() {
+        logger.info("ping received");
+        logger.info("pong returned");
+        return "pong";
+    }
+
     @PostMapping("/message")
     public String sendMessage(@RequestBody String message) {
         logger.info("Message received: %s", message);
