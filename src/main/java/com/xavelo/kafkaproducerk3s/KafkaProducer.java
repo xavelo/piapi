@@ -18,7 +18,7 @@ public class KafkaProducer {
     private KafkaTemplate<String, String> kafkaTemplate;
 
     public void sendMessage(String topic, String message) {
-        logger.info("sending message " + message + " to topic " + topic);
+        logger.info("-> topic '" + message + "' - message '" + topic + "'");
         kafkaTemplate.send(topic, message); 
     }
 
@@ -26,11 +26,9 @@ public class KafkaProducer {
         CompletableFuture<SendResult<String, String>> future = kafkaTemplate.send("pi-topic", message);
         future.whenComplete((result, ex) -> {
             if (ex == null) {
-                System.out.println("Sent message=[" + message +
-                        "] with offset=[" + result.getRecordMetadata().offset() + "]");
+                logger.error("Sent message=[" + message + "] with offset=[" + result.getRecordMetadata().offset() + "]");
             } else {
-                System.out.println("Unable to send message=[" +
-                        message + "] due to : " + ex.getMessage());
+                logger.error("Unable to send message=[" + message + "] due to : " + ex.getMessage());
             }
         });
     }
