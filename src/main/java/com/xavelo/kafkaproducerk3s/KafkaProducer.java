@@ -18,7 +18,7 @@ public class KafkaProducer {
     private KafkaTemplate<String, String> kafkaTemplate;
 
     public void sendMessage(String topic, String message) {
-        logger.info("-> topic '" + message + "' - message '" + topic + "'");
+        logger.info("---> topic '" + message + "' --- message '" + topic + "'");
         kafkaTemplate.send(topic, message); 
     }
 
