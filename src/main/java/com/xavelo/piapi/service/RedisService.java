@@ -13,7 +13,7 @@ public class RedisService {
     private static final Logger logger = LoggerFactory.getLogger(RedisService.class);
 
     @Autowired
-    private RedisTemplate<String, Object> redisTemplate;
+    private RedisTemplate<Object, Object> redisTemplate;
 
     public void saveData(String key, Object data) {
         logger.info("-> redis save key '" + key + "' with value '" + data  + "'");
