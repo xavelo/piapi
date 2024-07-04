@@ -1,4 +1,4 @@
-package com.xavelo.kafkaproducerk3s;
+package com.xavelo.piapi.config;
 
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;

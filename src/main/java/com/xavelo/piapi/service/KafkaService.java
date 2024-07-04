@@ -1,4 +1,4 @@
-package com.xavelo.kafkaproducerk3s;
+package com.xavelo.piapi.service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,9 +10,9 @@ import org.springframework.stereotype.Component;
 import java.util.concurrent.CompletableFuture;
 
 @Component
-public class KafkaProducer {
+public class KafkaService {
 
-    private static final Logger logger = LoggerFactory.getLogger(KafkaProducer.class);
+    private static final Logger logger = LoggerFactory.getLogger(KafkaService.class);
 
     @Autowired
     private KafkaTemplate<String, String> kafkaTemplate;

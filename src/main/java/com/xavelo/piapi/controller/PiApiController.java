@@ -1,5 +1,6 @@
-package com.xavelo.kafkaproducerk3s;
+package com.xavelo.piapi.controller;
 
+import com.xavelo.piapi.service.KafkaService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,7 @@ public class PiApiController {
     private static final Logger logger = LoggerFactory.getLogger(PiApiController.class);
 
     @Autowired
-    private KafkaProducer kafkaProducer;
+    private KafkaService kafkaProducer;
 
     @GetMapping("/ping")
     public String ping() {
