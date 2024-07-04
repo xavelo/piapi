@@ -16,7 +16,7 @@ public class RedisService {
     private RedisTemplate<String, Object> redisTemplate;
 
     public void saveData(String key, Object data) {
-        logger.info("-> redis save key '" + key + "' with value '" + data  + "'");,
+        logger.info("-> redis save key '" + key + "' with value '" + data  + "'");
         redisTemplate.opsForValue().set(key, data);
     }
 
