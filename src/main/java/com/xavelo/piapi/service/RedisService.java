@@ -24,4 +24,5 @@ public class RedisService {
     public Object getData(String key) {
         return redisTemplate.opsForValue().get(key);
     }
+
 }
