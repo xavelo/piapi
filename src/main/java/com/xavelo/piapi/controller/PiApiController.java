@@ -2,6 +2,7 @@ package com.xavelo.piapi.controller;
 
 import com.xavelo.piapi.service.KafkaService;
 import com.xavelo.piapi.service.LedService;
+import com.xavelo.piapi.service.MeteoService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,9 @@ public class PiApiController {
     @Autowired
     private LedService ledService;
 
+    @Autowired
+    private MeteoService meteoService;
+
     @GetMapping("/ping")
     public String ping() {
         logger.info("ping received");
@@ -38,11 +42,18 @@ public class PiApiController {
         return "Message sent to Kafka: " + message;
     }
 
+    @PostMapping("/meteo/message")
+    public String meteoMessage(@RequestBody Map<String, String> json) {
+        String message = json.get("message");
+        meteoService.meteoActivity(message);
+        return "Message sent to Kafka: " + message;
+    }
+
     @PostMapping("/led/message")
     public String led(@RequestBody Map<String, String> json) {
         String message = json.get("message");
         ledService.ledActivity(message);
-        return "Message sent to Kafka: " + message;
+        return "Led message sent to Kafka: " + message;
     }
 
 }
