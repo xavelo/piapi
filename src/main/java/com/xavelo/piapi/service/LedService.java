@@ -21,6 +21,7 @@ public class LedService {
     public void ledActivity(String message) {
         logger.info("-> ledActivity: " + message);
         kafkaService.sendMessage("pi-topic", message);
+        logger.info("-> calling redisService...");
         redisService.saveData(now().toString(), message);
     }
 
