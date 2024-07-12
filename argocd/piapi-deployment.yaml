@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: piapi-deployment
   annotations:
-    commitID: "5d31de97e4fe42150539762c95bdf206d2cav561"
+    commitID: "5d31de97e4fe42150539762c95bdf2a6d2cav561"
 spec:
   replicas: 2
   selector:
@@ -29,10 +29,10 @@ spec:
               cpu: 500m # Set CPU request to 250 millicpus (0.25 CPU)
             limits:
               cpu: 1000m
-          readinessProbe:
-            httpGet:
-              path: /actuator/health/readiness
-              port: 8080
-              initialDelaySeconds: 300
-              timeoutSeconds: 60
-              periodSeconds: 30
+#          readinessProbe:
+#            httpGet:
+#              path: /actuator/health/readiness
+#              port: 8080
+#              initialDelaySeconds: 300
+#              timeoutSeconds: 60
+#              periodSeconds: 30
