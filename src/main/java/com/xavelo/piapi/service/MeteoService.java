@@ -17,8 +17,8 @@ public class MeteoService {
     @Autowired
     private KafkaService kafkaService;
 
-    @Autowired
-    private RedisService redisService;
+    //@Autowired
+    //private RedisService redisService;
 
     public void meteoActivity(String message) {
         logger.info("-> meteoActivity: " + message);

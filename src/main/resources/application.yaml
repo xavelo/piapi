@@ -1,16 +1,28 @@
 application:
   name: piapi
+
 spring:
   kafka:
     producer:
       bootstrap-servers: my-cluster-kafka-bootstrap.kafka.svc:9092
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
-  redis:
-    host: 10.43.19.200
-    port: 6379
+  data:
+    redis:
+      host: 10.43.19.200
+      port: 6379
+
 management:
   endpoints:
-    web:
-      exposure:
-        include=*:
+      web:
+        exposure:
+          include: "*"
+  endpoint:
+    health:
+      probes:
+        enabled: true
+  health:
+    livenessState:
+        enabled: true
+    readinessState:
+        enabled: true
