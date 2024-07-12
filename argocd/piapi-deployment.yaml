@@ -3,9 +3,9 @@ kind: Deployment
 metadata:
   name: piapi-deployment
   annotations:
-    commitID: "5d31dd97e4fe42550539762c95bdf2a6d2cav561"
+    commitID: "5d31dd97e4fe3550539762c95bdf2a6d2cav561"
 spec:
-  replicas: 6
+  replicas: 3
   selector:
     matchLabels:
       app: piapi
@@ -28,7 +28,7 @@ spec:
             requests:
               cpu: 500m # Set CPU request to 250 millicpus (0.25 CPU)
             limits:
-              cpu: 1000m
+              cpu: 2000m
 #          readinessProbe:
 #            httpGet:
 #              path: /actuator/health/readiness
