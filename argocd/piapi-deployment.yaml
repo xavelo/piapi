@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: piapi-deployment
   annotations:
-    commitID: "5d31de97e4fe42150539762c95bdf206d2cac561"
+    commitID: "5d31de97e4fe42150539762c95bdf206d2cav561"
 spec:
   replicas: 2
   selector:
@@ -32,7 +32,7 @@ spec:
           readinessProbe:
             httpGet:
               path: /actuator/health/readiness
-              port: 8080
+              port: 30002
               initialDelaySeconds: 300
               timeoutSeconds: 60
               periodSeconds: 30
