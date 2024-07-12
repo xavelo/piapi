@@ -5,7 +5,7 @@ metadata:
   annotations:
     commitID: "5d31de97e4fe42150539762c95bdf206d2cac560"
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: piapi
@@ -29,3 +29,15 @@ spec:
               cpu: 500m # Set CPU request to 250 millicpus (0.25 CPU)
             limits:
               cpu: 1000m
+          readinessProbe:
+            httpGet:
+              path: /actuator/health/liveness
+              port: 8080
+              initialDelaySeconds: 30
+              periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /actuator/health/readiness
+              port: 8080
+              initialDelaySeconds: 30
+              periodSeconds: 10
