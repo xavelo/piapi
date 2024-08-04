@@ -10,7 +10,7 @@ import static java.time.LocalTime.now;
 @Service
 public class MeteoService {
 
-    private static final Logger logger = LoggerFactory.getLogger(MeteoService.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(MeteoService.class);
 
     private static final String PI_METEO_KAFKA_TOPIC = "pi-meteo-topic";
 
@@ -21,7 +21,7 @@ public class MeteoService {
     //private RedisService redisService;
 
     public void meteoActivity(String message) {
-        logger.info("-> meteoActivity: " + message);
+        LOGGER.info("-> meteoActivity: {}", message);
         kafkaService.sendMessage(PI_METEO_KAFKA_TOPIC, message);
         //redisService.saveData(now().toString(), message);
     }

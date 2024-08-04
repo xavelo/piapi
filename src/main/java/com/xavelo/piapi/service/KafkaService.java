@@ -12,13 +12,13 @@ import java.util.concurrent.CompletableFuture;
 @Service
 public class KafkaService {
 
-    private static final Logger logger = LoggerFactory.getLogger(KafkaService.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(KafkaService.class);
 
     @Autowired
     private KafkaTemplate<String, String> kafkaTemplate;
 
     public void sendMessage(String topic, String message) {
-        logger.info("---> topic '" + topic + "' --- message '" + message + "'");
+        LOGGER.info("-> topic '{}' --- message '{}'", topic, message);
         kafkaTemplate.send(topic, message); 
     }
 
@@ -26,9 +26,9 @@ public class KafkaService {
         CompletableFuture<SendResult<String, String>> future = kafkaTemplate.send("pi-topic", message);
         future.whenComplete((result, ex) -> {
             if (ex == null) {
-                logger.error("Sent message=[" + message + "] with offset=[" + result.getRecordMetadata().offset() + "]");
+                LOGGER.error("Sent message=[" + message + "] with offset=[" + result.getRecordMetadata().offset() + "]");
             } else {
-                logger.error("Unable to send message=[" + message + "] due to : " + ex.getMessage());
+                LOGGER.error("Unable to send message=[" + message + "] due to : " + ex.getMessage());
             }
         });
     }

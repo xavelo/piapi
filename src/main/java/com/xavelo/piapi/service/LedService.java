@@ -10,7 +10,7 @@ import static java.time.LocalTime.now;
 @Service
 public class LedService {
 
-    private static final Logger logger = LoggerFactory.getLogger(LedService.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(LedService.class);
 
     @Autowired
     private KafkaService kafkaService;
@@ -19,9 +19,9 @@ public class LedService {
     private RedisService redisService;
 
     public void ledActivity(String message) {
-        logger.info("-> ledActivity: " + message);
+        LOGGER.info("-> ledActivity: {}", message);
         kafkaService.sendMessage("pi-topic", message);
-        logger.info("-> calling redisService...");
+        LOGGER.info("-> calling redisService...");
         redisService.saveData(now().toString(), message);
     }
 
