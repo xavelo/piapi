@@ -17,7 +17,7 @@ public class RedisService {
     private Environment env;
 
     @Autowired
-    private RedisTemplate<String, Object> redisTemplate;
+    private RedisTemplate<Object, Object> redisTemplate;
 
     public void saveData(String key, Object data) {
         String redisIP = env.getProperty("spring.data.redis.host");
