@@ -24,10 +24,6 @@ public class RedisService {
         String redisIP = env.getProperty("spring.data.redis.host");
         LOGGER.info("-> redis save key '{}' with value '{}' - {}", key, data, redisIP);
         redisTemplate.opsForValue().set(key, data);
-
-        Object o = getData(key);
-        LOGGER.info("object {}", String.valueOf(o));
-
     }
 
     @Cacheable("myCache")
