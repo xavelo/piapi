@@ -25,6 +25,13 @@ public class RedisService {
         redisTemplate.opsForValue().set(key, data);
     }
 
+    public void saveToList(String list, Object data) {
+        String redisIP = env.getProperty("spring.data.redis.host");
+        LOGGER.info("-> redis save to list '{}' value '{}' - {}", list, data, redisIP);
+        redisTemplate.opsForList().leftPush(list, data.toString());
+        LOGGER.info("{} list contains {} entries for key {}", list, redisTemplate.opsForList().range(data,0,-1).size(), data);
+    }
+
     @Cacheable("myCache")
     public Object getData(String key) {
         return redisTemplate.opsForValue().get(key);

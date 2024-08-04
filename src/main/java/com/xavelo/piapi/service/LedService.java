@@ -22,7 +22,8 @@ public class LedService {
         LOGGER.info("-> ledActivity: {}", message);
         kafkaService.sendMessage("pi-topic", message);
         LOGGER.info("-> calling redisService...");
-        redisService.saveData(now().toString(), message);
+        //redisService.saveData(now().toString(), message);
+        redisService.saveToList("keda_list", message);
     }
 
 }
