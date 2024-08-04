@@ -23,7 +23,7 @@ public class LedService {
         // kafka
         kafkaService.sendMessage("pi-topic", message);
         // redis
-        if("reset".equals(message)) redisService.resetList("keda-list");
+        if("reset".equals(message)) redisService.resetList("keda_list");
         redisService.saveKeyValue("led_" + now().toString(), message);
         redisService.saveToList("keda_list", message);
     }
