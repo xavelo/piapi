@@ -19,23 +19,34 @@ public class RedisService {
     @Autowired
     private RedisTemplate<Object, Object> redisTemplate;
 
-    public void saveData(String key, Object data) {
-        String redisIP = env.getProperty("spring.data.redis.host");
-        LOGGER.info("-> redis save key '{}' with value '{}' - {}", key, data, redisIP);
-        redisTemplate.opsForValue().set(key, data);
+    public String getRedisHostIP() {
+        return env.getProperty("spring.data.redis.host");
     }
 
-    public void saveToList(String list, Object data) {
-        String redisIP = env.getProperty("spring.data.redis.host");
-        LOGGER.info("-> redis save to list '{}' value '{}' - {}", list, data, redisIP);
-        redisTemplate.opsForList().leftPush(list, data.toString());
-        LOGGER.info("{} list contains {} entries for key {}", list, redisTemplate.opsForList().range(list,0,-1).size(), data);
-        System.out.println(redisTemplate.opsForList().range(list, 0, -1));
+    public void saveKeyValue(String key, Object value) {
+        LOGGER.info("-> redis save key '{}' with value '{}'", key, value);
+        redisTemplate.opsForValue().set(key, value);
+    }
+
+    public void saveToList(String list, Object value) {
+        LOGGER.info("-> redis save to list '{}' value '{}' - {}", list, value);
+        redisTemplate.opsForList().leftPush(list, value.toString());
+        LOGGER.info("{} list contains {} entries", list, String.valueOf(getListSize(list)));
+    }
+
+    public void resetList(String list) {
+        LOGGER.info("-> redis reset list '{}'", list);
+        redisTemplate.delete(list);
+        LOGGER.info("{} list contains {} entries", list, String.valueOf(getListSize(list)));
     }
 
     @Cacheable("myCache")
     public Object getData(String key) {
         return redisTemplate.opsForValue().get(key);
+    }
+
+    private long getListSize(String list) {
+        return redisTemplate.opsForList().size(list);
     }
 
 }

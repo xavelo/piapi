@@ -20,9 +20,11 @@ public class LedService {
 
     public void ledActivity(String message) {
         LOGGER.info("-> ledActivity: {}", message);
+        // kafka
         kafkaService.sendMessage("pi-topic", message);
-        LOGGER.info("-> calling redisService...");
-        //redisService.saveData(now().toString(), message);
+        // redis
+        if("reset".equals(message)) redisService.resetList("keda-list");
+        redisService.saveKeyValue("led_" + now().toString(), message);
         redisService.saveToList("keda_list", message);
     }
 
