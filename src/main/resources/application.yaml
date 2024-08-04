@@ -9,7 +9,7 @@ spring:
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
   data:
     redis:
-      host: 10.43.19.200
+      host: 10.43.133.15
       port: 6379
 
 management:
