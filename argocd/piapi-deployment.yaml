@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: piapi-deployment
   annotations:
-    commitID: "5a20dx94e4fe3550539762c95bdf2a6d4cav561"
+    commitID: "5a20dx94e4fe35c0539762c95bdf2a6d4cav561"
 spec:
   replicas: 1
   selector:

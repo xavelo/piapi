@@ -29,7 +29,8 @@ public class RedisService {
         String redisIP = env.getProperty("spring.data.redis.host");
         LOGGER.info("-> redis save to list '{}' value '{}' - {}", list, data, redisIP);
         redisTemplate.opsForList().leftPush(list, data.toString());
-        LOGGER.info("{} list contains {} entries for key {}", list, redisTemplate.opsForList().range(data,0,-1).size(), data);
+        LOGGER.info("{} list contains {} entries for key {}", list, redisTemplate.opsForList().range(list,0,-1).size(), data);
+        System.out.println(redisTemplate.opsForList().range(list, 0, -1));
     }
 
     @Cacheable("myCache")
