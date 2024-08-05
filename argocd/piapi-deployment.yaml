@@ -5,7 +5,7 @@ metadata:
   annotations:
     commitID: "a964dbd6bb16c13b404c24269e40de15605fb63a"
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: piapi
@@ -36,3 +36,9 @@ spec:
               initialDelaySeconds: 300
               timeoutSeconds: 60
               periodSeconds: 30
+          startupProbe:
+            httpGet:
+              path: /actuator/health/readiness
+              port: 8080
+            failureThreshold: 30
+            periodSeconds: 10
