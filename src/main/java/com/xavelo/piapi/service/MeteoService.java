@@ -5,8 +5,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import static java.time.LocalTime.now;
-
 @Service
 public class MeteoService {
 
@@ -17,13 +15,9 @@ public class MeteoService {
     @Autowired
     private KafkaService kafkaService;
 
-    //@Autowired
-    //private RedisService redisService;
-
     public void meteoActivity(String message) {
         LOGGER.info("-> meteoActivity: {}", message);
         kafkaService.sendMessage(PI_METEO_KAFKA_TOPIC, message);
-        //redisService.saveData(now().toString(), message);
     }
 
 }
