@@ -5,7 +5,7 @@ metadata:
   annotations:
     commitID: "91ac085b6b613239049f4847034b7dafdf117839"
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: piapi
