@@ -24,21 +24,21 @@ spec:
           image: 'xavelo/piapi:ed78d7a747e6b78b2719520219c2f25e1eed6a58'
           ports:
             - containerPort: 80
-          resources:
-            requests:
-              cpu: 500m # Set CPU request to 250 millicpus (0.25 CPU)
-            limits:
-              cpu: 2000m
-          readinessProbe:
-            httpGet:
-              path: /actuator/health/readiness
-              port: 8080
-              initialDelaySeconds: 300
-              timeoutSeconds: 60
-              periodSeconds: 30
-          startupProbe:
-            httpGet:
-              path: /actuator/health/readiness
-              port: 8080
-            failureThreshold: 30
-            periodSeconds: 10
+#          resources:
+#            requests:
+#              cpu: 500m # Set CPU request to 250 millicpus (0.25 CPU)
+#            limits:
+#              cpu: 2000m
+#          readinessProbe:
+#            httpGet:
+#              path: /actuator/health/readiness
+#              port: 8080
+#              initialDelaySeconds: 300
+#              timeoutSeconds: 60
+#              periodSeconds: 30
+#          startupProbe:
+#            httpGet:
+#              path: /actuator/health/readiness
+#              port: 8080
+#            failureThreshold: 30
+#            periodSeconds: 10
