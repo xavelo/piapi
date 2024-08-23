@@ -1,6 +1,8 @@
 application:
   name: piapi
 
+debug: true
+
 spring:
   kafka:
     producer:
