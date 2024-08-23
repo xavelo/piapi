@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: piapi-deployment
   annotations:
-    commitID: "8fbfb8a83908c5566a110635b72ec7ed9662b622"
+    commitID: "73c11c4d816d18adac58c3803c642ecf46bfce0a"
 spec:
   replicas: 10
   selector:
@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
         - name: piapi
-          image: 'xavelo/piapi:8fbfb8a83908c5566a110635b72ec7ed9662b622'
+          image: 'xavelo/piapi:73c11c4d816d18adac58c3803c642ecf46bfce0a'
           ports:
             - containerPort: 80
 #         env:
