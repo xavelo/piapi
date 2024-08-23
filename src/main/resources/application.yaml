@@ -2,3 +2,10 @@ application:
   name: piapi
 
 debug: true
+
+logging:
+  level:
+    org:
+      springframework:
+        boot:
+          availability=TRACE
