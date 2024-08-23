@@ -5,7 +5,7 @@ metadata:
   annotations:
     commitID: "8fbfb8a83908c5566a110635b72ec7ed9662b622"
 spec:
-  replicas: 3
+  replicas: 10
   selector:
     matchLabels:
       app: piapi
@@ -24,9 +24,9 @@ spec:
           image: 'xavelo/piapi:8fbfb8a83908c5566a110635b72ec7ed9662b622'
           ports:
             - containerPort: 80
-          env:
-            - name: LOGGING_LEVEL_ROOT
-              value: "DEBUG"
+#         env:
+#            - name: LOGGING_LEVEL_ROOT
+#              value: "DEBUG"
 #          resources:
 #            requests:
 #              cpu: 500m # Set CPU request to 250 millicpus (0.25 CPU)

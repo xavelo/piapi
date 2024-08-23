@@ -27,6 +27,6 @@ management:
         include: "*"
   health:
     livenessState:
-        enabled: true
+        enabled: false
     readinessState:
-        enabled: true
+        enabled: false
