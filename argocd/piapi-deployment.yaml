@@ -5,15 +5,15 @@ metadata:
   annotations:
     commitID: "7bce68d7c846f844c027a56b5b09f17116e3b446"
 spec:
-  replicas: 5
+  replicas: 3
   selector:
     matchLabels:
       app: piapi
   strategy:
     type: RollingUpdate
     rollingUpdate:
-      maxSurge: 3
-      maxUnavailable: 0
+      maxSurge: 5
+      maxUnavailable: 1
   template:
     metadata:
       labels:
