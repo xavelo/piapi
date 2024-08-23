@@ -3,9 +3,3 @@ application:
 
 debug: true
 
-logging:
-  level:
-    org:
-      springframework:
-        boot:
-          availability: TRACE
