@@ -9,10 +9,10 @@ spring:
       bootstrap-servers: my-cluster-kafka-bootstrap.kafka.svc:9092
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
-  data:
-    redis:
-      host: 10.43.133.15
-      port: 6379
+#  data:
+#    redis:
+#      host: 10.43.133.15
+#      port: 6379
 
 management:
   port: 8080

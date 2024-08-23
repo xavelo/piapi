@@ -19,9 +19,6 @@ spec:
       labels:
         app: piapi
     spec:
-      template:
-        spec:
-          terminationGracePeriodSeconds: 60
       containers:
         - name: piapi
           image: 'xavelo/piapi:3bf0211a389be260574259a92e1e7f4e720e3992'
