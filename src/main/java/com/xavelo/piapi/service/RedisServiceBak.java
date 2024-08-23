@@ -9,9 +9,9 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 @Service
-public class RedisService {
+public class RedisServiceBak {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(RedisService.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(RedisServiceBak.class);
 
     @Autowired
     private Environment env;

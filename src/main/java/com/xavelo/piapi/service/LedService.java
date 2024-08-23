@@ -15,17 +15,19 @@ public class LedService {
     @Autowired
     private KafkaService kafkaService;
 
-    @Autowired
-    private RedisService redisService;
+    //@Autowired
+    //private RedisService redisService;
 
     public void ledActivity(String message) {
         LOGGER.info("-> ledActivity: {}", message);
         // kafka
         kafkaService.sendMessage("pi-topic", message);
         // redis
+        /*
         if("reset".equals(message)) redisService.resetList("keda_list");
         redisService.saveKeyValue("led_" + now().toString(), message);
         redisService.saveToList("keda_list", message);
+        */
     }
 
 }
